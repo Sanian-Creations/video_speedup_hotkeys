@@ -13,8 +13,9 @@
 // @match       https://goload.pro/*
 // @match       https://www.youtube.com/*
 // @match       https://secretlink.xyz/*
+// @match       https://mega.nz/embed/*
 // @grant       none
-// @version     1.0.0.1
+// @version     1.0.0.2
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
