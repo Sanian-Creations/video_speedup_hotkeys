@@ -16,7 +16,7 @@
 // @match       https://mega.nz/embed/*
 // @match       https://soap2day.to/*
 // @grant       none
-// @version     1.0.0.3
+// @version     1.0.1.0
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -72,8 +72,10 @@ function get_video() {
       let vid = document.querySelector("video");
       vid.parentElement.prepend(spd_elem);
 
-      // return the cached video element right away.
-      return () => vid; 
+      // return the cached video element right away. (also check if the cached element is still there)
+      return () => vid.isConnected 
+        ? vid 
+        : vid = document.querySelector("video");
     }
   })();
   
