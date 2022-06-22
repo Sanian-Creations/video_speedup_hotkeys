@@ -2,7 +2,6 @@
 // @name        Video Speedup Hotkeys
 // @namespace   sanian_creations
 // @match       https://v.vvid.cc/p/player.html
-// @match       https://animixplay.to/*
 // @match       https://mp4.sh/*
 // @match       https://gogoplay.io/*
 // @match       https://embed.meomeo.pw/*
@@ -15,8 +14,9 @@
 // @match       https://secretlink.xyz/*
 // @match       https://mega.nz/embed/*
 // @match       https://soap2day.to/*
+// @match       https://www.mp4upload.com/embed*
 // @grant       none
-// @version     1.0.1.0
+// @version     1.0.2.0
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -33,17 +33,18 @@ z-index: 1000;
 text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 0 0 5px black;
 visibility: hidden;`;
 
-document.addEventListener('keydown', (e) => {
+document.addEventListener("keydown", (e) => {
   
   // ignore hotkeys if the user is typing
   if (document.activeElement.tagName === "INPUT" || document.activeElement.tagName === "TEXTAREA") return;
   
-  switch (e.key) {
+   switch (e.key) {
     case "a": speed_up(-1);    break;
     case "d": speed_up(1);     break;
     case "A": speed_up(-0.25); break;
     case "D": speed_up(0.25);  break;
     case "s": skip_intro();    break;
+    case "t": test();          break;
     case "h": {
       console.log("video",   get_video());
       console.log("spdText", spd_elem);
@@ -51,6 +52,13 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+function test() {
+  let vid = document.querySelector("video");
+  console.log("%cvideo speedup hotkeys", "color:#00ffff; font-size: 20px;") 
+  console.log("%cwindow/iframe url:",    "color:#00ffff;", window.location.href);
+  console.log("%cvideo src:        ",    "color:#00ffff;", vid.src);
+  console.log("%cvideo element:\n",      "color:#00ffff;", vid);
+}
 
 function get_video() {
   
