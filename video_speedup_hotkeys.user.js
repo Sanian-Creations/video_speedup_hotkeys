@@ -15,8 +15,9 @@
 // @match       https://mega.nz/embed/*
 // @match       https://soap2day.to/*
 // @match       https://www.mp4upload.com/embed*
+// @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.0.3.0
+// @version     1.0.3.1
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
