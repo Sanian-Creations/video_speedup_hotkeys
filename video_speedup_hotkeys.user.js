@@ -17,7 +17,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.0.3.1
+// @version     1.0.4.0
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -71,30 +71,22 @@ function test(e) {
 
 function get_video() {
   
-  // overwrite this function with the correct getter, depending on the page.
-  get_video = (() => {
-    if (window.location.host === "www.youtube.com") {
+  let getter;
+  let init_spd_elem;
 
-      let vid = document.querySelector("#movie_player video");
-      document.querySelector("#movie_player").prepend(spd_elem);
-
-      // return the video element right away, but youtube sometimes replaces the 
-      // video element, so we do need to check if the cached element is still on the page.
-      return () => vid.isConnected 
-        ? vid 
-        : vid = document.querySelector("#movie_player video");
-
-    } else {
-
-      let vid = document.querySelector("video");
-      vid.parentElement.prepend(spd_elem);
-
-      // return the cached video element right away. (also check if the cached element is still there)
-      return () => vid.isConnected 
-        ? vid 
-        : vid = document.querySelector("video");
-    }
-  })();
+  if (window.location.host === "www.youtube.com") {
+    getter        = () => document.querySelector("#movie_player video");
+    init_spd_elem = () => document.querySelector("#movie_player").prepend(spd_elem);
+  } else {
+    getter        = () => document.querySelector("video");
+    init_spd_elem = (vid) => vid.parentElement.prepend(spd_elem);
+  }
+  
+  let vid = getter();
+  init_spd_elem(vid);
+  
+  // only this code will run on any subsequent call to this function.
+  get_video = () => ( vid.isConnected ? vid : vid = getter() );
   
   return get_video();
 }
