@@ -17,7 +17,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.0.5.0
+// @version     1.1.0.0
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -44,12 +44,23 @@ document.addEventListener("keydown", (e) => {
   if (e.target.isContentEditable || e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
   
   switch (e.key) {
-    case "a": speed_up(-1);    break;
-    case "d": speed_up(1);     break;
-    case "A": speed_up(-0.25); break;
-    case "D": speed_up(0.25);  break;
-    case "s": skip_intro();    break;
-    case "t": test(e);         break;
+    case "a": speed_up(-1); break;
+    case "d": speed_up( 1); break;
+      
+    case "A": {
+      (speed > 0.25)
+        ? speed_up(-0.25, 0.25)
+        : multiply_speed(0.5);
+    } break;
+      
+    case "D": {
+      (speed >= 0.25)
+        ? speed_up(0.25, 0.25)
+        : multiply_speed(2);
+    } break;
+      
+    case "s": skip_intro(); break;
+    case "t": test(e);      break;
   }
 });
 
@@ -95,17 +106,29 @@ function get_video() {
 function skip_intro() {
   const vid = get_video();
   // Skip ahead by 1:27 rather than 1:30 so that you dont miss a bit of the scene after skipping 
-  vid.currentTime = min(vid.currentTime + 87, vid.duration - 1); // use -1 to not go past end of video
+  vid.currentTime = Math.min(vid.currentTime + 87, vid.duration - 1); // use -1 to not go past end of video
 }
 
-function speed_up(increment) {
-  set_speed(max(1, speed + increment));
+function speed_up(increment, lower_bound) {
+  lower_bound ||= 1;
+  set_speed(Math.max(lower_bound, speed + increment));
+}
+
+function multiply_speed(multiplier) {
+  set_speed(speed * multiplier); 
 }
 
 function set_speed(spd) {
   const vid = get_video();
-  vid.playbackRate = spd;
   
+  spd = clamp(spd, 0.0625, 16); 
+  vid.playbackRate = spd;
+  // playbackRate *can* be set to values outside of this range, but the browser does not
+  // support actually playing videos at other speeds, it just plays as slow or fast as it can
+  // without giving any indication whether or not the value is supported. Therefore, we're
+  // clamping the value manually so that the speed we display isn't misleading, by for
+  // instance displaying 20x when in reality it cannot go faster than 16x
+
   // Only show speedup text if there is a speedup to speak of. Having "1x" on screen is annoying.
   spd_elem.textContent = `${spd}x`;
   spd_elem.style.visibility = (spd === 1) ? "hidden" : ""; 
@@ -122,12 +145,8 @@ function ensure_video_speed(mutation_list, observer) {
   }
 }
 
-function max(a, b) {
-  return (a > b) ? a : b;
-}
-
-function min(a, b) {
-  return (a < b) ? a : b;
+function clamp(num, min, max) {
+  return Math.min(Math.max(num, min), max);
 }
 
 function print_title() {
