@@ -17,7 +17,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.0.4.4
+// @version     1.0.4.5
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -86,19 +86,13 @@ function skip_intro() {
 }
 
 function speed_up(increment) {
-  const vid = get_video();
-  const spd = max(1, vid.playbackRate + increment);
-  vid.playbackRate = spd;
-  set_spd_txt(vid.playbackRate);
+  set_speed(max(1, speed + increment));
 }
 
 function set_spd(spd) {
   const vid = get_video();
   vid.playbackRate = spd;
-  set_spd_text(vid.playbackRate);
-}
-
-function set_spd_txt(spd) {
+  
   // Only show speedup text if there is a speedup to speak of. Having "1x" on screen is annoying.
   spd_elem.textContent = `${spd}x`;
   spd_elem.style.visibility = (spd === 1) ? "hidden" : ""; 
