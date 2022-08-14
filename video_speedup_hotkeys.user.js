@@ -17,12 +17,12 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.0.4.1
+// @version     1.0.4.2
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
 
-let spd_elem = document.createElement('p');
+const spd_elem = document.createElement('p');
 
 spd_elem.style = 
 `color: white;
@@ -72,20 +72,20 @@ function get_video() {
 }
 
 function skip_intro() {
-  let vid = get_video();
+  const vid = get_video();
   // Skip ahead by 1:27 rather than 1:30 so that you dont miss a bit of the scene after skipping 
   vid.currentTime = min(vid.currentTime + 87, vid.duration - 1); // use -1 to not go past end of video
 }
 
 function speed_up(increment) {
-  let vid = get_video();
-  let spd = max(1, vid.playbackRate + increment);
+  const vid = get_video();
+  const spd = max(1, vid.playbackRate + increment);
   vid.playbackRate = spd;
   set_spd_txt(vid.playbackRate);
 }
 
 function set_spd(spd) {
-  let vid = get_video();
+  const vid = get_video();
   vid.playbackRate = spd;
   set_spd_text(vid.playbackRate);
 }
