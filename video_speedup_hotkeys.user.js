@@ -17,7 +17,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.0.4.0
+// @version     1.0.4.1
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -48,26 +48,6 @@ document.addEventListener("keydown", (e) => {
     case "t": test(e);         break;
   }
 });
-
-
-function test(e) {
-  const style = "color:#00ffff;";
-  const video = document.querySelector("video");
-  const got_vid = get_video();
-
-  console.log("%cvideo speedup hotkeys", style + "font-size: 20px;") 
-  console.log("%cwindow/iframe url:",    style, window.location.href);
-  console.log("%cspdText",               style, spd_elem);
-  console.log("%ckeydown event",         style, e);
-  
-  if (video !== got_vid) {
-      console.log("%cmismatching elements:",            style + "color:#ff0000");
-      console.log("%cdocument.querySelector('video'):", style, video);
-      console.log("%cget_video():",                     style, got_vid);
-  } else {
-      console.log("%cvideo:", style, video);
-  }
-}
 
 function get_video() {
   
@@ -122,4 +102,23 @@ function max(a, b) {
 
 function min(a, b) {
   return (a < b) ? a : b;
+}
+
+function test(e) {
+  const style = "color:#00ffff;";
+  const video = document.querySelector("video");
+  const got_vid = get_video();
+
+  console.log("%cvideo speedup hotkeys", style + "font-size: 20px;") 
+  console.log("%cwindow/iframe url:",    style, window.location.href);
+  console.log("%cspdText",               style, spd_elem);
+  console.log("%ckeydown event",         style, e);
+  
+  if (video !== got_vid) {
+      console.log("%cmismatching elements:",            style + "color:#ff0000");
+      console.log("%cdocument.querySelector('video'):", style, video);
+      console.log("%cget_video():",                     style, got_vid);
+  } else {
+      console.log("%cvideo:", style, video);
+  }
 }
