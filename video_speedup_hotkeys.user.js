@@ -17,13 +17,14 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.0.4.6
+// @version     1.0.5.0
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
 
 const console_style = "color:#00ffff;";
 const spd_elem = document.createElement('p');
+let speed = 1;
 
 spd_elem.style = 
 `color: white;
@@ -67,18 +68,25 @@ function get_video() {
     parent_getter = (vid) => vid.parentElement;
   }
   
-  let vid    =    vid_getter();
-  let parent = parent_getter(vid);
-  
-  parent.prepend(spd_elem);
+  let vid    = {};
+  let observer = new MutationObserver(ensure_video_speed);
   
   // End of initialization. On any subsequent call to this function, only this code will run:
   
   get_video = () => { 
-    if (vid.isConnected) return vid;
+    if (!vid.isConnected) {
+      vid = vid_getter();
+      console.log("%cVid gone, got the new one!", console_style);
 
-    console.log("%cVid gone, got the new one!", console_style);
-    return vid = vid_getter();
+      let parent = parent_getter();
+      parent.prepend(spd_elem);
+
+      observer.disconnect();
+      observer.observe(parent, { childList: true, subtree: true });
+      observer.observe(vid,    { attributes: true });
+    }
+    
+    return vid;
   };
   
   return get_video();
@@ -94,13 +102,24 @@ function speed_up(increment) {
   set_speed(max(1, speed + increment));
 }
 
-function set_spd(spd) {
+function set_speed(spd) {
   const vid = get_video();
   vid.playbackRate = spd;
   
   // Only show speedup text if there is a speedup to speak of. Having "1x" on screen is annoying.
   spd_elem.textContent = `${spd}x`;
   spd_elem.style.visibility = (spd === 1) ? "hidden" : ""; 
+  
+  speed = spd; // backing field
+}
+
+function ensure_video_speed(mutation_list, observer) {
+  const vid = get_video();
+  
+  if (vid.playbackRate !== speed && speed !== 1) {
+    console.log(`%cVideo speed was modified to ${vid.playbackRate},\n but the video is running at a custom speed right now.\nFlipping back to custom value ${speed}`, console_style);
+    set_speed(speed);
+  }
 }
 
 function max(a, b) {
