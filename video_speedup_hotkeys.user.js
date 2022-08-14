@@ -107,6 +107,10 @@ function min(a, b) {
   return (a < b) ? a : b;
 }
 
+function print_title() {
+  console.log("%cvideo speedup hotkeys", console_style + "font-size: 20px;");
+}
+
 function test(e) {
   const style = "color:#00ffff;";
   const video = document.querySelector("video");
