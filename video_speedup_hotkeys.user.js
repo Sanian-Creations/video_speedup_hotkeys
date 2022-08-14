@@ -17,7 +17,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.0.4.3
+// @version     1.0.4.4
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -69,7 +69,12 @@ function get_video() {
   init_spd_elem(vid);
   
   // only this code will run on any subsequent call to this function.
-  get_video = () => ( vid.isConnected ? vid : vid = getter() );
+  get_video = () => { 
+    if (vid.isConnected) return vid;
+
+    console.log("%cVid gone, got the new one!", console_style);
+    return vid = vid_getter();
+  };
   
   return get_video();
 }
@@ -112,7 +117,6 @@ function print_title() {
 }
 
 function test(e) {
-  const style = "color:#00ffff;";
   const video = document.querySelector("video");
   const got_vid = get_video();
 
