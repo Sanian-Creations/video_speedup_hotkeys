@@ -17,7 +17,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.0.4.5
+// @version     1.0.4.6
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -54,21 +54,26 @@ document.addEventListener("keydown", (e) => {
 
 function get_video() {
   
-  let getter;
-  let init_spd_elem;
+  // Initialization, only runs on the first call
+  
+  let vid_getter;
+  let parent_getter;
 
   if (window.location.host === "www.youtube.com") {
-    getter        = () => document.querySelector("#movie_player video");
-    init_spd_elem = () => document.querySelector("#movie_player").prepend(spd_elem);
+    vid_getter    =    () => document.querySelector("#movie_player video");
+    parent_getter = (vid) => document.querySelector("#movie_player");
   } else {
-    getter        = () => document.querySelector("video");
-    init_spd_elem = (vid) => vid.parentElement.prepend(spd_elem);
+    vid_getter    =    () => document.querySelector("video");
+    parent_getter = (vid) => vid.parentElement;
   }
   
-  let vid = getter();
-  init_spd_elem(vid);
+  let vid    =    vid_getter();
+  let parent = parent_getter(vid);
   
-  // only this code will run on any subsequent call to this function.
+  parent.prepend(spd_elem);
+  
+  // End of initialization. On any subsequent call to this function, only this code will run:
+  
   get_video = () => { 
     if (vid.isConnected) return vid;
 
