@@ -17,7 +17,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.1.0.0
+// @version     1.1.1.0
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -89,7 +89,7 @@ function get_video() {
       vid = vid_getter();
       console.log("%cVid gone, got the new one!", console_style);
 
-      let parent = parent_getter();
+      let parent = parent_getter(vid);
       parent.prepend(spd_elem);
 
       observer.disconnect();
