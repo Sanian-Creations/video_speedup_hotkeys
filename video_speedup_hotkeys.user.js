@@ -4,6 +4,7 @@
 // @match       https://v.vvid.cc/p/player.html
 // @match       https://mp4.sh/*
 // @match       https://gogoplay.io/*
+// @match       https://goload.io/*
 // @match       https://embed.meomeo.pw/*
 // @match       https://mcloud.to/embed/*
 // @match       https://vidstream.pro/*
@@ -17,7 +18,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.1.1.0
+// @version     1.1.1.1
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
