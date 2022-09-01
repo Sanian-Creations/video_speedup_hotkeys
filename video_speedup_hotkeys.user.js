@@ -9,6 +9,7 @@
 // @match       https://mcloud.to/embed/*
 // @match       https://vidstream.pro/*
 // @match       https://plyr.link/*
+// @match       https://plyr.in/*
 // @match       https://www.dailymotion.com/embed/video/*
 // @match       https://goload.pro/*
 // @match       https://www.youtube.com/*
@@ -18,7 +19,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.1.1.1
+// @version     1.1.1.2
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
