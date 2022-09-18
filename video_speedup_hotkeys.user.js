@@ -19,7 +19,7 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @grant       none
-// @version     1.1.1.2
+// @version     1.1.2.0
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -87,9 +87,9 @@ function get_video() {
   // End of initialization. On any subsequent call to this function, only this code will run:
   
   get_video = () => { 
-    if (!vid.isConnected) {
+    if ( ! (vid?.isConnected) ) { // null, undefined or not connected
       vid = vid_getter();
-      console.log("%cVid gone, got the new one!", console_style);
+      console.log("%cVid gone, got the new one!", console_style, vid);
 
       let parent = parent_getter(vid);
       parent.prepend(spd_elem);
