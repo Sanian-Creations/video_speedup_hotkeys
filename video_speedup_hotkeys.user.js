@@ -18,8 +18,9 @@
 // @match       https://soap2day.to/*
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
+// @match       https://animixplay.to/player.html
 // @grant       none
-// @version     1.1.2.0
+// @version     1.1.2.1
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -28,7 +29,7 @@ const console_style = "color:#00ffff;";
 const spd_elem = document.createElement('p');
 let speed = 1;
 
-spd_elem.style = 
+spd_elem.style =
 `color: white;
 position: absolute;
 top: 0;
@@ -41,35 +42,35 @@ visibility: hidden;`;
 print_title();
 
 document.addEventListener("keydown", (e) => {
-  
+
   // ignore hotkeys if the user is typing
   if (e.target.isContentEditable || e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
-  
+
   switch (e.key) {
     case "a": speed_up(-1); break;
     case "d": speed_up( 1); break;
-      
+
     case "A": {
       (speed > 0.25)
         ? speed_up(-0.25, 0.25)
         : multiply_speed(0.5);
     } break;
-      
+
     case "D": {
       (speed >= 0.25)
         ? speed_up(0.25, 0.25)
         : multiply_speed(2);
     } break;
-      
+
     case "s": skip_intro(); break;
     case "t": test(e);      break;
   }
 });
 
 function get_video() {
-  
+
   // Initialization, only runs on the first call
-  
+
   let vid_getter;
   let parent_getter;
 
@@ -80,13 +81,13 @@ function get_video() {
     vid_getter    =    () => document.querySelector("video");
     parent_getter = (vid) => vid.parentElement;
   }
-  
+
   let vid    = {};
   let observer = new MutationObserver(ensure_video_speed);
-  
+
   // End of initialization. On any subsequent call to this function, only this code will run:
-  
-  get_video = () => { 
+
+  get_video = () => {
     if ( ! (vid?.isConnected) ) { // null, undefined or not connected
       vid = vid_getter();
       console.log("%cVid gone, got the new one!", console_style, vid);
@@ -98,16 +99,16 @@ function get_video() {
       observer.observe(parent, { childList: true, subtree: true });
       observer.observe(vid,    { attributes: true });
     }
-    
+
     return vid;
   };
-  
+
   return get_video();
 }
 
 function skip_intro() {
   const vid = get_video();
-  // Skip ahead by 1:27 rather than 1:30 so that you dont miss a bit of the scene after skipping 
+  // Skip ahead by 1:27 rather than 1:30 so that you dont miss a bit of the scene after skipping
   vid.currentTime = Math.min(vid.currentTime + 87, vid.duration - 1); // use -1 to not go past end of video
 }
 
@@ -117,13 +118,13 @@ function speed_up(increment, lower_bound) {
 }
 
 function multiply_speed(multiplier) {
-  set_speed(speed * multiplier); 
+  set_speed(speed * multiplier);
 }
 
 function set_speed(spd) {
   const vid = get_video();
-  
-  spd = clamp(spd, 0.0625, 16); 
+
+  spd = clamp(spd, 0.0625, 16);
   vid.playbackRate = spd;
   // playbackRate *can* be set to values outside of this range, but the browser does not
   // support actually playing videos at other speeds, it just plays as slow or fast as it can
@@ -133,14 +134,14 @@ function set_speed(spd) {
 
   // Only show speedup text if there is a speedup to speak of. Having "1x" on screen is annoying.
   spd_elem.textContent = `${spd}x`;
-  spd_elem.style.visibility = (spd === 1) ? "hidden" : ""; 
-  
+  spd_elem.style.visibility = (spd === 1) ? "hidden" : "";
+
   speed = spd; // backing field
 }
 
 function ensure_video_speed(mutation_list, observer) {
   const vid = get_video();
-  
+
   if (vid.playbackRate !== speed && speed !== 1) {
     console.log(`%cVideo speed was modified to ${vid.playbackRate},\n but the video is running at a custom speed right now.\nFlipping back to custom value ${speed}`, console_style);
     set_speed(speed);
@@ -163,7 +164,7 @@ function test(e) {
   console.log("%cwindow/iframe url:",    console_style, window.location.href);
   console.log("%cspdText",               console_style, spd_elem);
   console.log("%ckeydown event",         console_style, e);
-  
+
   if (video !== got_vid) {
       console.log("%cmismatching elements:",            console_style + "color:#ff0000");
       console.log("%cdocument.querySelector('video'):", console_style, video);
