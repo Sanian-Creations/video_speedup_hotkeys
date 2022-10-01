@@ -19,8 +19,9 @@
 // @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
 // @match       https://animixplay.to/player.html
+// @match       https://www.twitch.tv/videos/*
 // @grant       none
-// @version     1.1.2.1
+// @version     1.1.2.2
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
