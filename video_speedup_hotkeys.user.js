@@ -22,7 +22,7 @@
 // @match       https://www.twitch.tv/videos/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.1.2.3
+// @version     1.2.0.0
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -65,6 +65,7 @@ document.addEventListener("keydown", (e) => {
     } break;
 
     case "s": skip_intro(); break;
+    case "S": toggle_preserve_pitch(); break;
     case "t": test(e);      break;
   }
 });
@@ -148,6 +149,11 @@ function ensure_video_speed(mutation_list, observer) {
     console.log(`%cVideo speed was modified to ${vid.playbackRate},\n but the video is running at a custom speed right now.\nFlipping back to custom value ${speed}`, console_style);
     set_speed(speed);
   }
+}
+
+function toggle_preserve_pitch() {
+  const vid = get_video();
+  vid.preservesPitch = !vid.preservesPitch
 }
 
 function clamp(num, min, max) {
