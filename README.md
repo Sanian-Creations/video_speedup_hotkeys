@@ -7,6 +7,7 @@ If you already have one of these extensions, you can install the script by click
 * A - Video speed +1 (hold shift for +0.25)
 * D - Video speed -1 (hold shift for -0.25)
 * S - Skip ahead by 1:27 seconds, for skipping past intros
+* Shift + S - Toggle pitch preservation. Pitch preservation is on by defualt. (Example: with pitch preservation off, sped up videos will get higher pitched.)
 
 ## Versioning scheme
 Versioning scheme is MAJOR.MINOR.PATCH.MATCH
