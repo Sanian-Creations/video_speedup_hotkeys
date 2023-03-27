@@ -21,8 +21,9 @@
 // @match       https://animixplay.to/player.html
 // @match       https://www.twitch.tv/videos/*
 // @match       https://yugen.to/e/*
+// @match       https://vizcloud.co/e/*
 // @grant       none
-// @version     1.2.0.0
+// @version     1.2.0.1
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
