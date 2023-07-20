@@ -1,29 +1,29 @@
 // ==UserScript==
 // @name        Video Speedup Hotkeys
 // @namespace   sanian_creations
-// @match       https://v.vvid.cc/p/player.html
-// @match       https://mp4.sh/*
+// @match       https://animixplay.to/player.html
+// @match       https://embed.meomeo.pw/*
 // @match       https://gogoplay.io/*
 // @match       https://goload.io/*
-// @match       https://embed.meomeo.pw/*
-// @match       https://mcloud.to/embed/*
-// @match       https://vidstream.pro/*
-// @match       https://plyr.link/*
-// @match       https://plyr.in/*
-// @match       https://www.dailymotion.com/embed/video/*
 // @match       https://goload.pro/*
-// @match       https://www.youtube.com/*
-// @match       https://secretlink.xyz/*
+// @match       https://mcloud.to/embed/*
 // @match       https://mega.nz/embed/*
+// @match       https://mp4.sh/*
+// @match       https://player.vimeo.com/video/*
+// @match       https://plyr.in/*
+// @match       https://plyr.link/*
+// @match       https://secretlink.xyz/*
 // @match       https://soap2day.to/*
-// @match       https://www.mp4upload.com/embed*
 // @match       https://static.crunchyroll.com/*
-// @match       https://animixplay.to/player.html
-// @match       https://www.twitch.tv/*
-// @match       https://yugen.to/e/*
+// @match       https://vidstream.pro/*
 // @match       https://vizcloud.co/e/*
+// @match       https://www.dailymotion.com/embed/video/*
+// @match       https://www.mp4upload.com/embed*
+// @match       https://www.twitch.tv/*
+// @match       https://www.youtube.com/*
+// @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.2.0.2
+// @version     1.2.0.3
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
