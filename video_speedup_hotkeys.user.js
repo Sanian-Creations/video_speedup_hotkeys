@@ -13,9 +13,11 @@
 // @match       https://player.vimeo.com/video/*
 // @match       https://plyr.in/*
 // @match       https://plyr.link/*
+// @match       https://rabbitstream.net/*
 // @match       https://secretlink.xyz/*
 // @match       https://soap2day.to/*
 // @match       https://static.crunchyroll.com/*
+// @match       https://vidplay.site/*
 // @match       https://vidstream.pro/*
 // @match       https://vizcloud.co/e/*
 // @match       https://www.dailymotion.com/embed/video/*
@@ -24,7 +26,7 @@
 // @match       https://www.youtube.com/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.2.0.4
+// @version     1.2.0.5
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
