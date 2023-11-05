@@ -8,7 +8,7 @@
 // @match       https://gogoplay.io/*
 // @match       https://goload.io/*
 // @match       https://goload.pro/*
-// @match       https://mcloud.to/embed/*
+// @match       https://mcloud.*/*
 // @match       https://mega.nz/embed/*
 // @match       https://mp4.sh/*
 // @match       https://peertube.nodja.com/*
@@ -19,7 +19,7 @@
 // @match       https://secretlink.xyz/*
 // @match       https://soap2day.to/*
 // @match       https://static.crunchyroll.com/*
-// @match       https://vidplay.site/*
+// @match       https://vidplay.*/*
 // @match       https://vidstream.pro/*
 // @match       https://vizcloud.co/e/*
 // @match       https://www.dailymotion.com/embed/video/*
@@ -28,7 +28,7 @@
 // @match       https://www.youtube.com/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.2.0.7
+// @version     1.2.0.8
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
