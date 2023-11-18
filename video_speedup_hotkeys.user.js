@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name        Video Speedup Hotkeys
 // @namespace   sanian_creations
+// @match       https://9anime.*/*
+// @match       https://anihdplay.com/*
 // @match       https://animixplay.to/player.html
 // @match       https://dokicloud.one/*
 // @match       https://embed.meomeo.pw/*
 // @match       https://filemoon.sx/*
 // @match       https://gogoplay.io/*
-// @match       https://goload.io/*
-// @match       https://goload.pro/*
+// @match       https://goload.*/*
+// @match       https://goone.*/*
 // @match       https://mcloud.*/*
 // @match       https://mega.nz/embed/*
 // @match       https://mp4.sh/*
@@ -28,7 +30,7 @@
 // @match       https://www.youtube.com/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.2.0.8
+// @version     1.2.0.9
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
