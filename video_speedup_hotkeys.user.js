@@ -3,10 +3,12 @@
 // @namespace   sanian_creations
 // @match       https://9anime.*/*
 // @match       https://a9bfed0818.*/*
+// @match       https://allanime.day/*
 // @match       https://anihdplay.com/*
 // @match       https://animixplay.to/player.html
 // @match       https://dokicloud.one/*
 // @match       https://embed.meomeo.pw/*
+// @match       https://embed.su/*
 // @match       https://filemoon.sx/*
 // @match       https://gogoplay.io/*
 // @match       https://goload.*/*
@@ -31,6 +33,7 @@
 // @match       https://vid142.*/*
 // @match       https://vid1a52.*/*
 // @match       https://vid2a41.*/*
+// @match       https://vidco.pro/*
 // @match       https://vidplay.*/*
 // @match       https://vidstream.pro/*
 // @match       https://vizcloud.co/e/*
@@ -42,7 +45,7 @@
 // @match       https://ynowfnga.xyz/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.4
+// @version     1.5
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
