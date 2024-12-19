@@ -15,6 +15,7 @@
 // @match       https://goone.*/*
 // @match       https://kerapoxy.*/*
 // @match       https://kwik.si/*
+// @match       https://omegadthree.com/*
 // @match       https://player.mangafrenzy.*/*
 // @match       https://mcloud.*/*
 // @match       https://mega.nz/embed/*
@@ -45,7 +46,7 @@
 // @match       https://ynowfnga.xyz/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.5
+// @version     1.5.1
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
