@@ -21,6 +21,7 @@
 // @match       https://mega.nz/embed/*
 // @match       https://megacloud.*/*
 // @match       https://megaf.cc/*
+// @match       https://miruro.tv/*
 // @match       https://mp4.sh/*
 // @match       https://peertube.nodja.com/*
 // @match       https://player.vimeo.com/video/*
@@ -46,7 +47,7 @@
 // @match       https://ynowfnga.xyz/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.5.1
+// @version     1.5.2
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
