@@ -47,7 +47,7 @@
 // @match       https://ynowfnga.xyz/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.5.3
+// @version     1.5.4
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
@@ -78,6 +78,8 @@ const _CSS = `
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 0 0 5px black;
   font-size: 11.8px;
   font-family: fantasy;
+  top: 0;
+  left: 0;
 }
 p { margin: 0; }
 #speed_display {
