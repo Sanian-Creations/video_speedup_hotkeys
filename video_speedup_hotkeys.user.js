@@ -6,6 +6,7 @@
 // @match       https://allanime.day/*
 // @match       https://anihdplay.com/*
 // @match       https://animixplay.to/player.html
+// @match       https://anix.sh/*
 // @match       https://dokicloud.one/*
 // @match       https://embed.meomeo.pw/*
 // @match       https://embed.su/*
@@ -47,7 +48,7 @@
 // @match       https://ynowfnga.xyz/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.5.4
+// @version     1.5.5
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
