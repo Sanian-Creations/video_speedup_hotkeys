@@ -22,6 +22,7 @@
 // @match       https://player.mangafrenzy.*/*
 // @match       https://mcloud.*/*
 // @match       https://mega.nz/embed/*
+// @match       https://megaplay.buzz/stream/*
 // @match       https://megacloud.*/*
 // @match       https://megaf.cc/*
 // @match       https://mp4.sh/*
@@ -41,6 +42,7 @@
 // @match       https://vidplay.*/*
 // @match       https://vidstream.pro/*
 // @match       https://vizcloud.co/e/*
+// @match       https://www.cineby.app/*
 // @match       https://www.dailymotion.com/embed/video/*
 // @match       https://www.miruro.tv/*
 // @match       https://www.mp4upload.com/embed*
@@ -50,7 +52,7 @@
 // @match       https://ynowfnga.xyz/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.5.6
+// @version     1.5.7
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
