@@ -44,7 +44,7 @@
 // @match       https://vizcloud.co/e/*
 // @match       https://www.cineby.app/*
 // @match       https://www.dailymotion.com/embed/video/*
-// @match       https://www.miruro.tv/*
+// @match       https://www.miruro.*/*
 // @match       https://www.mp4upload.com/embed*
 // @match       https://www.twitch.tv/*
 // @match       https://www.youtube.com/*
@@ -52,7 +52,7 @@
 // @match       https://ynowfnga.xyz/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.5.7
+// @version     1.5.8
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
