@@ -55,12 +55,15 @@
 // @match       https://ynowfnga.xyz/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.5.11
+// @version     1.5.12
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
 
-const _HTML = `
+// on most sites you can use a raw string but on YouTube you need a TrustedHTML object to assign to innerHTML.
+const do_nothing_policy = trustedTypes.createPolicy("videospeeduphotkeys", { createHTML: s => s });
+
+const _HTML = do_nothing_policy.createHTML(`
 <p id="speed_display">&nbsp;</p>
 <div id="menu">
   <label>Fine grain control<br>
@@ -75,7 +78,7 @@ const _HTML = `
   <p></p>
   <button id="cross">X</button>
 </div>
-`;
+`);
 
 const _CSS = `
 :host {
