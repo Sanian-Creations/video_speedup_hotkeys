@@ -41,6 +41,7 @@
 // @match       https://secretlink.xyz/*
 // @match       https://soap2day.tld/*
 // @match       https://static.crunchyroll.com/*
+// @match       https://strm.cx/*
 // @match       https://vid142.tld/*
 // @match       https://vid1a52.tld/*
 // @match       https://vid2a41.tld/*
@@ -58,7 +59,7 @@
 // @match       https://ynowfnga.xyz/*
 // @match       https://yugen.to/e/*
 // @grant       none
-// @version     1.5.16
+// @version     1.5.17
 // @author      Sanian
 // @description Allows speeding up of videos with A and D (hold Shift for more precision). Skip ahead by 1:30 with S.
 // ==/UserScript==
